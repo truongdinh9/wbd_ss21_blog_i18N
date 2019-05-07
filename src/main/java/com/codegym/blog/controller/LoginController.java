@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @SessionAttributes("user")
 public class LoginController {
@@ -19,7 +22,8 @@ public class LoginController {
   }
 
   @PostMapping("/login")
-  public String dashboard(@ModelAttribute("credential") Credential credential, Model model) {
+  public String dashboard(@ModelAttribute("credential") Credential credential, Model model, HttpServletRequest request) {
+    HttpSession session = request.getSession();
     User user = new User();
     user.setUserName(credential.getUsername());
     model.addAttribute("user", user);

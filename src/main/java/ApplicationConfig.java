@@ -56,25 +56,43 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     return viewResolver;
   }
 
+//  @Bean
+//  public MessageSource messageSource() {
+//    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//    messageSource.setBasename("message");
+//    return messageSource;
+//  }
+//
+//  @Override
+//  public void addInterceptors(InterceptorRegistry registry) {
+//    LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+//    interceptor.setParamName("lang");
+//    registry.addInterceptor(interceptor);
+//  }
+//
+//  @Bean
+////  public LocaleResolver localeResolver() {
+////    SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+////    localeResolver.setDefaultLocale(new Locale("en"));
+////    return localeResolver;
+////  }
   @Bean
-  public MessageSource messageSource() {
-    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+  public MessageSource messageSource(){
+    ResourceBundleMessageSource messageSource=new ResourceBundleMessageSource();
     messageSource.setBasename("message");
     return messageSource;
   }
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-    LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+    LocaleChangeInterceptor interceptor=new LocaleChangeInterceptor();
     interceptor.setParamName("lang");
     registry.addInterceptor(interceptor);
   }
-
   @Bean
   public LocaleResolver localeResolver() {
     SessionLocaleResolver localeResolver = new SessionLocaleResolver();
     localeResolver.setDefaultLocale(new Locale("en"));
     return localeResolver;
   }
-
 }
